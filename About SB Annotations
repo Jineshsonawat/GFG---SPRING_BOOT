@@ -1,0 +1,42 @@
+Very Vast list of SB annotation
+
+Annotation - It is a form of metadata in java that provide the info about the prog. but is not part of the program logic itself.
+It does not directly affect the code execution but they can be used by compiler tools or Framework at compile/runtime to influence behavior.
+
+
+
+1. @SpringBootApplication - Combination of 3 annotation
+a. @Configuration - Mark the class as a source of bean definition (Like <beans> in config file)
+b. @EnableAutoConfiguration - Tells SB to automatically configure beans on the dependencies.
+                              It's like decide what we need to do and it will do all the things to complete that.
+c. @ComponentScan - Sca the package & sub pac. where the classes marked as bean.
+
+
+2. @Component  - Becomes a bean where we use on a class.
+3. @Repository - @Component but used for Repository classes/interface
+                 It has extra DB related exception handling feature.
+                 DB calls - class/interface deals with DB queries.
+4. @Service    - @Component but used for classes with business logic.
+5. @Controller - @Component but used for handling HTTP request and return view(HTML,JSP etc).
+6 @RestController - Combination of 2 (@Controller & @ResponseBody)
+                                                          |
+                                     All methods return JSON/XML instead of view.Best for SB.
+7. @Bean - Tells Spring how to create a bean.
+      |    Whatever the return type of the method will become a bean.
+      | -------------------------------------------------
+Used inside a class marked                              | Curated on a method which return a
+as @Configuration                                         class object you do not own.
+
+8. @Scope - used to set the scope of a bean.
+
+Idempotent - An operation is idempotent if performing it multiple times has the same effect as performing it once.
+
+Together, they implement the CRUD operations in a RESTFUL API.
+9.  @GetMapping    - Handles HTTP Get Request. Idempotent
+                     Used to retrieve resources. Get the details of users.
+10. @PostMapping   - Handles HTTP Post Request. Not Idempotent
+                     Used to create new resources or submit data.
+11. @PutMapping    - Handles HTTP Put Request. Idempotent
+                     Used to update or replace an Existing resource
+12. @DeleteMapping - Handles HTTP Delete Request. Idempotent
+                     Used to delete the resource

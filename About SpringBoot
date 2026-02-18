@@ -1,0 +1,24 @@
+THere is a site - Spring initializer (In that we can choose version of spring, Java and which tool we want to use. Also can add dependencies. It can create the SB project for us.)
+
+Advantage Of SB - Easy to develop application
+                  No need to define beans in applicationContext.xml
+                  Annotation will do all the work.
+                  Save time to develop. Etc.
+
+** In SB project there is a file with main function and that is the only file that have main function in SB.
+
+That class has annotation as @SpringBootApplication. (Possible by dependency - spring-boot-starter-web).
+
+In Spring we need to do all the things like define the beans In SB it will be done by annotations.
+
+-- Whenever we add a dependency or add anything in XML file or when we provide the jar file to anyone we should first run mvn clean install (It check the xml file and if anything does not have in our project then it downloads it.)
+
+How to run the SB Application.
+
+1.Run the Application Directly.
+2. Official One - Run the command (mvn clean install), it will generate target folder.
+                  Inside the folder we have a Jar file and we need to run that jar file.
+
+   Command -      java -jar name of jar file
+                  java -jar ./target/sb-0.0-SNAPSHOT.jar
+
