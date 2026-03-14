@@ -3,10 +3,7 @@ package com.learning.sb.controller;
 
 import com.learning.sb.Service.TestService;
 import com.learning.sb.ex.Food;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,16 +24,20 @@ public class TestController {
         this.testService.sayHello();
     }
 
+
     @GetMapping("/pizza")
     public String getFood(){
         return "Make Pizza";
     }
 
-    @GetMapping("/food")
-    public Food getData(){
-        Food f = new Food();
-        f.setName("Pizza");
-        return f;
+    /*If we read a JSON file having id and want to get the data from id. Two ways
+      1. Path Params = @PathVariable -> need to add id in the URL
+      2. Query Params = @RequestParam -> No need to add in URL.
+         change PathVariable to RequestParam and try using postman.
+         */
+    @GetMapping("/get_item/{id}")
+    public Food makePizza(@PathVariable int id) throws IOException {
+       return this.testService.getFoodById(id);
     }
 
 //    From this we can post the data. If we use body for taking data then need to use @RequestBody

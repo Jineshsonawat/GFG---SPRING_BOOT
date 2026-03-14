@@ -57,8 +57,11 @@ Partial Update (Like update the password only in user profile)
 
 13. @JsonSerialize - We are returning object and want it as JSON. Object -> JSON
 14. @JsonDeserialize - JSON -> Object.
+15. @RequestBody - we have to provide the knowledge that the data comes from body and need to know that we have define it via this annotation. Only for POST request.
 
 ** Request has many parts.
 1. Type of Request - GET/PUT/POST/DELETE
 2. Request URL
-3. Params(Parameter) - Query/Request param and Path param
+3. Params(Parameter) - Query/Request param - @RequestParam - we use it for filter
+                       Path param - @PathVariable
+

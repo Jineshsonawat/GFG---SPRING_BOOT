@@ -16,6 +16,7 @@ import lombok.Setter;
 @Setter
 public class Food {
 
+    private int id;
     private String name;
 
 }
