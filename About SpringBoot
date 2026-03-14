@@ -22,3 +22,5 @@ How to run the SB Application.
    Command -      java -jar name of jar file
                   java -jar ./target/sb-0.0-SNAPSHOT.jar
 
+
+

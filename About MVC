@@ -1,0 +1,5 @@
+M - Model: Model are classes.Each model contain inf. of real world thing for which we are building applications
+V - View: A HTML/JSP/Thymeleaf page that is return in response
+C - Controller: part of the code that handles incoming request and outgoing response.
+
+** In old time Backend and Frontend at the same codebase. The Frontend part is called View.

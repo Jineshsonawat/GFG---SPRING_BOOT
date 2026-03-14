@@ -4,7 +4,6 @@ Annotation - It is a form of metadata in java that provide the info about the pr
 It does not directly affect the code execution but they can be used by compiler tools or Framework at compile/runtime to influence behavior.
 
 
-
 1. @SpringBootApplication - Combination of 3 annotation
 a. @Configuration - Mark the class as a source of bean definition (Like <beans> in config file)
 b. @EnableAutoConfiguration - Tells SB to automatically configure beans on the dependencies.
@@ -25,7 +24,7 @@ c. @ComponentScan - Sca the package & sub pac. where the classes marked as bean.
       |    Whatever the return type of the method will become a bean.
       | -------------------------------------------------
 Used inside a class marked                              | Curated on a method which return a
-as @Configuration                                         class object you do not own.
+as @Configuration                                         class object you do not own. (Google Drive)
 
 8. @Scope - used to set the scope of a bean.
 
@@ -34,9 +33,32 @@ Idempotent - An operation is idempotent if performing it multiple times has the 
 Together, they implement the CRUD operations in a RESTFUL API.
 9.  @GetMapping    - Handles HTTP Get Request. Idempotent
                      Used to retrieve resources. Get the details of users.
+                     It is faster than others.(Can Cache & give it to us if we hit same thing more time)
+                     It cache like static one, like home page
 10. @PostMapping   - Handles HTTP Post Request. Not Idempotent
                      Used to create new resources or submit data.
 11. @PutMapping    - Handles HTTP Put Request. Idempotent
                      Used to update or replace an Existing resource
 12. @DeleteMapping - Handles HTTP Delete Request. Idempotent
                      Used to delete the resource
+
+- All curd operations can be used with @RestController.
+- Hitting URl is always a GET Request.
+- Request is of 4 types (GET/PUT/POST/DELETE)(99%).
+- Every Request has a Response (Mandatory). Response have 2 things. ResponseBody and ResponseStatus
+- @PatchMapping/@HeadMapping/@OptionsMapping (These are also some options but used only 1%)
+        |
+Partial Update (Like update the password only in user profile)
+
+-- GraphQL - use postMapping only (10 level beyond Rest calls)
+
+--Lombok - it take care of Constructor, Getter, Setter. Just need to define via annotation.
+                                                        @Getter, @Setter and many more
+
+13. @JsonSerialize - We are returning object and want it as JSON. Object -> JSON
+14. @JsonDeserialize - JSON -> Object.
+
+** Request has many parts.
+1. Type of Request - GET/PUT/POST/DELETE
+2. Request URL
+3. Params(Parameter) - Query/Request param and Path param
