@@ -1,8 +1,12 @@
 package com.learning.sb.controller;
 
 
+import com.learning.sb.Exception.NotFoundException;
 import com.learning.sb.Service.TestService;
-import com.learning.sb.ex.Food;
+import com.learning.sb.model.ErrorResponse;
+import com.learning.sb.model.Food;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileWriter;
@@ -21,7 +25,7 @@ public class TestController {
     //   It used to get the data whenever the Url is hit.
     @GetMapping("/")
     public void sayHello(){
-        this.testService.sayHello();
+        this.testService.test();
     }
 
 
@@ -36,8 +40,16 @@ public class TestController {
          change PathVariable to RequestParam and try using postman.
          */
     @GetMapping("/get_item/{id}")
-    public Food makePizza(@PathVariable int id) throws IOException {
-       return this.testService.getFoodById(id);
+    public ResponseEntity<?> makePizza(@PathVariable int id) throws IOException {
+        try{
+            Food food =  this.testService.getFoodById(id);
+            return new ResponseEntity<>(food, HttpStatus.OK);
+        }catch(NotFoundException e){
+            return new ResponseEntity<>(ErrorResponse.builder()
+                    .message(e.getMessage())
+                    .build(), HttpStatus.NOT_FOUND);
+        }
+
     }
 
 //    From this we can post the data. If we use body for taking data then need to use @RequestBody

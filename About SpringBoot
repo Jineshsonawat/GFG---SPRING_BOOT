@@ -23,4 +23,26 @@ How to run the SB Application.
                   java -jar ./target/sb-0.0-SNAPSHOT.jar
 
 
+## @Builder - Similar as Constructor. It is a derived concept.
+---  When we create object of class we need to provide values of parameters in a particular order but if we have 30 - 40 parameters then its hard to give values in order, to solve this issue we use builder.
+
+## @With - by using this annotation we can create the copy of the object by changing only one parameter
+                          Food food1 = food.withName("Aman");
+
+Aspect Oriented Programming (AOP) - Allows you to separate cross cutting concerns from business logic
+
+Logging - in Simpler words its like printing.
+Always use logger to logs the details which your application needs.
+
+  We can use SlF4j for logging
+    Syntax - private static Logger log = LoggerFactory.getLogger(TestService.class); or use @Slf4j
+
+
+
+
+
+
+
+
+
 
