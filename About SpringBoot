@@ -37,6 +37,25 @@ Always use logger to logs the details which your application needs.
   We can use SlF4j for logging
     Syntax - private static Logger log = LoggerFactory.getLogger(TestService.class); or use @Slf4j
 
+ How to show the status or message to the user or as a response, using ResponseEntity.
+
+ Example - it says if the status is PL then shows food and if status is NOT_FOUND then shows the message.
+
+  @GetMapping("/get_item/{id}")
+     public ResponseEntity<?> makePizza(@PathVariable int id) throws IOException {
+         try{
+             Food food =  this.testService.getFoodById(id);
+             return new ResponseEntity<>(food, HttpStatus.OK);
+         }catch(NotFoundException e){
+             return new ResponseEntity<>(ErrorResponse.builder()
+                     .message(e.getMessage())
+                     .build(), HttpStatus.NOT_FOUND);
+         }
+
+     }
+
+-- In AOP we can define at one place that before and after logs and that will execute automatically whenever that method runs. we can also make it conditional, by default it's false. and define the property in application.properties.
+                 @ConditionalOnProperty(value = "aspect.loging" , havingValue = "true")
 
 
 

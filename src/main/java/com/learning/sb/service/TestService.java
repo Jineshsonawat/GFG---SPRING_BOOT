@@ -1,4 +1,4 @@
-package com.learning.sb.Service;
+package com.learning.sb.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,6 +7,7 @@ import com.learning.sb.config.GoogleDrive;
 import com.learning.sb.model.Food;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.util.List;
 
 // this annotation marked this class as bean.
 @Slf4j
-@Component
+@Service
 public class TestService {
 
 //    Can be done by the annotation @Slf4j
@@ -47,7 +48,7 @@ public class TestService {
 
         Food food = foodFound.get(0);
 
-        log.info("Food with id: ${} was found", id);
+        log.info("Food with id: {} was found", id);
 
         return food;
     }

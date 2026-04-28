@@ -2,7 +2,7 @@ package com.learning.sb.controller;
 
 
 import com.learning.sb.Exception.NotFoundException;
-import com.learning.sb.Service.TestService;
+import com.learning.sb.service.TestService;
 import com.learning.sb.model.ErrorResponse;
 import com.learning.sb.model.Food;
 import org.springframework.http.HttpStatus;
