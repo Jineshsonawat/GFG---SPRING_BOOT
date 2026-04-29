@@ -1,0 +1,16 @@
+JDBC (Java Database Connectivity) - Way of connecting java application to Database.
+
+                   To connect Database with java application we need
+                   1. JDBC URL - jdbc:postgresql://localhost:8080/postgres -- Database name
+                                         |              |       | -- Port
+                                  Database type     Running on your own computer
+                   2. DB User name
+                   3. DB password
+                   4. query
+
+Syntax -
+               Connection connection = DriverManager.getConnection(url , user, password)
+               Statement statement = connection.createStatement();
+               ResultSet resultSet = statement.executeQuery(query);
+
+
