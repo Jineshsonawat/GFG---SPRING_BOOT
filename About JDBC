@@ -13,4 +13,9 @@ Syntax -
                Statement statement = connection.createStatement();
                ResultSet resultSet = statement.executeQuery(query);
 
+## DDL (Data Definition Language) - Defining/modifying the Structure of the Schema. Ex:- Create, Delete, Insert etc.
+                                    For doing this we need to use executeUpdate(query) - this will not return anything.
+
+## DML (Data Manipulation Language) - Work with the data inside the table. Ex - Select , Update, Alter etc.
+                                      For doing this we need to use executeQuery(query) - this will return the data which can store in ResultSet.
 
