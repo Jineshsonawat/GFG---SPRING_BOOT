@@ -1,9 +1,13 @@
 package com.learning.sb.jdbc;
 
+import com.learning.sb.mapper.EmployeeRowMapper;
 import com.learning.sb.model.Employee;
+import org.springframework.jdbc.core.RowMapper;
 
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JDBCConnectionDemo {
 
@@ -19,16 +23,13 @@ public class JDBCConnectionDemo {
                 + "id SERIAL PRIMARY KEY, "
                 + "name VARCHAR(100), "
                 + "department VARCHAR(100))";
-        String selectCommand = "Select * from public.employee";
+
 
 //        runUpdate(createCommand);
 //        addEmployee(new Employee("Dharmesh", "IOS"));
-        deleteEmployeeByName(new Employee("Dharmesh"));
+//        deleteEmployeeByName(new Employee("Dharmesh"));
+        System.out.println(addAllEmployee());
 
-        ResultSet r = runQuery(selectCommand);
-        while (r != null && r.next()) {
-            System.out.println(r.getString("name") + "-" + r.getString("department"));
-        }
 
     }
 
@@ -99,6 +100,33 @@ public class JDBCConnectionDemo {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    public static List<Employee> addAllEmployee() throws SQLException {
+        List<Employee> list = new ArrayList<Employee>();
+        String selectCommand = "Select * from public.employee";
+        ResultSet rs = runQuery(selectCommand);
+
+//        Instead of doing this we can use Row Mapper. It's same just the clean code here
+//        while(rs != null && rs.next()){
+//            list.add(
+//                    new Employee(
+//                    rs.getInt("id"),
+//                    rs.getString("name"),
+//                    rs.getString("department")
+//            ));
+//        }
+
+        RowMapper<Employee> rowMapper = new EmployeeRowMapper();
+
+        int i = 0;
+//        No use of Index just we can make it usable as we need.
+        while(rs != null && rs.next()){
+            list.add(rowMapper.mapRow(rs, i++));
+        }
+
+        return list;
+
     }
 
 }

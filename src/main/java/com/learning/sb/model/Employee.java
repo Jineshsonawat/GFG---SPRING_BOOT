@@ -7,10 +7,13 @@ import lombok.Data;
 @Data
 public class Employee {
 
-    String name;
-    String department;
+    private int id;
+    private String name;
+    private String department;
 
     public Employee(String name) {
         this.name = name;
     }
+
+
 }

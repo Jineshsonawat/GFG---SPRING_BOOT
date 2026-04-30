@@ -19,3 +19,8 @@ Syntax -
 ## DML (Data Manipulation Language) - Work with the data inside the table. Ex - Select , Update, Alter etc.
                                       For doing this we need to use executeQuery(query) - this will return the data which can store in ResultSet.
 
+## Row Mapper - Used to look the code cleaner and make the code reusable.
+
+## Connection Pooling - Connection pooling in Java JDBC is a technique to reuse database connections instead of creating a new one for every request, which saves time and resources.
+Popular libraries like HikariCP, Apache Commons DBCP, and C3P0 provide ready-to-use connection pools for PostgreSQL, MySQL, and other databases.
+

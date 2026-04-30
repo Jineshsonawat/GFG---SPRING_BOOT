@@ -20,8 +20,8 @@ public class JDBCDemoOfUsingSingleConnection {
             String selectCommand = "Select * from public.employee";
 
 //        runUpdate(createCommand);
-            addEmployee(new Employee("Dharmesh", "IOS"));
-            addEmployee(new Employee("Janak", "Design"));
+//            addEmployee(new Employee("Dharmesh", "IOS"));
+//            addEmployee(new Employee("Janak", "Design"));
             deleteEmployeeByName(new Employee("Jinesh"));
 
 
