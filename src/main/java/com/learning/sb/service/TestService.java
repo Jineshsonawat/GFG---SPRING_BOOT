@@ -4,13 +4,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learning.sb.Exception.NotFoundException;
 import com.learning.sb.config.GoogleDrive;
+import com.learning.sb.mapper.EmployeeRowMapper;
+import com.learning.sb.model.Employee;
 import com.learning.sb.model.Food;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 // this annotation marked this class as bean.
@@ -27,8 +32,11 @@ public class TestService {
 //    We do not mark the class with @Component still using as Bean bcz we marked as @Bean.
     public GoogleDrive googleDrive;
 
-    public TestService(GoogleDrive googleDrive) {
+    private JdbcTemplate jdbcTemplate;
+
+    public TestService(GoogleDrive googleDrive, JdbcTemplate jdbcTemplate) {
         this.googleDrive = googleDrive;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     public Food getFoodById(int id) throws IOException {
@@ -72,6 +80,14 @@ public class TestService {
 //        If you need a copy of whole object with different name
         Food food1 = food.withName("Aman");
 
+    }
+
+    public List<Employee> addAllEmployee(){
+        List<Employee> list = new ArrayList<Employee>();
+        String fetch = "Select * from public.employee";
+
+//        This line return a list of employee and internally call rowMapper.mapRow()
+        return this.jdbcTemplate.query(fetch , new EmployeeRowMapper());
     }
 
 }

@@ -2,6 +2,7 @@ package com.learning.sb.controller;
 
 
 import com.learning.sb.Exception.NotFoundException;
+import com.learning.sb.model.Employee;
 import com.learning.sb.service.TestService;
 import com.learning.sb.model.ErrorResponse;
 import com.learning.sb.model.Food;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class TestController {
@@ -50,6 +53,13 @@ public class TestController {
                     .build(), HttpStatus.NOT_FOUND);
         }
 
+    }
+
+    @GetMapping("/employee_list")
+    public ResponseEntity<?> getAllEmployee(){
+        List<Employee> e = this.testService.addAllEmployee();
+
+        return new ResponseEntity<>(e, HttpStatus.OK);
     }
 
 //    From this we can post the data. If we use body for taking data then need to use @RequestBody
