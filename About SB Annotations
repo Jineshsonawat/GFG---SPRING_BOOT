@@ -65,3 +65,9 @@ Partial Update (Like update the password only in user profile)
 3. Params(Parameter) - Query/Request param - @RequestParam - we use it for filter
                        Path param - @PathVariable
 
+16. @Qualifier - Used when multiple beans of the same type exist in the Spring context.
+                 It tells Spring exactly which bean to inject.
+                 Works together with @Autowired. Check About JDBC for Ex.
+17. @Primary - Marks one bean as the default choice when multiple candidates exist.
+               If you don’t specify @Qualifier, Spring will inject the @Primary bean.
+

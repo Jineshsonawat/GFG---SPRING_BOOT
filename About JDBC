@@ -24,3 +24,59 @@ Syntax -
 ## Connection Pooling - Connection pooling in Java JDBC is a technique to reuse database connections instead of creating a new one for every request, which saves time and resources.
 Popular libraries like HikariCP, Apache Commons DBCP, and C3P0 provide ready-to-use connection pools for PostgreSQL, MySQL, and other databases.
 
+To connect database from Spring without wring any connection code mention all the connecting thing in application.yaml/yml or application.properties file and use JdbcTemplate.
+
+There can be multiple databases and to make sure JdbcTemplate know which to connect we need to define it in yaml file by Primary and Secondary(defining properties of 2 DB)
+
+Ex: -
+
+Yml file has this
+        datasource:
+          primary:
+            url: "jdbc:postgresql://localhost:8080/postgres"
+            username: postgres
+            password: 1101
+
+          secondary:
+            url: "jdbc:mysql://localhost:3306/mysqldb"
+            username: admin
+            password: admin
+
+Need to create a class which define and tell JDBC to read the datasource and provide the name by @Qualifier
+
+@Configuration
+public class DatabaseConfig {
+
+    @Bean(name = "primaryJdbcTemplate")
+    public JdbcTemplate primaryJdbcTemplate(@Qualifier("primaryDataSource") DataSource ds) {
+        return new JdbcTemplate(ds);
+    }
+
+    @Bean(name = "secondaryJdbcTemplate")
+    public JdbcTemplate secondaryJdbcTemplate(@Qualifier("secondaryDataSource") DataSource ds) {
+        return new JdbcTemplate(ds);
+    }
+}
+
+Then where ever you use JbdcTemplate we need to annotate with @Qualifier("name of the bean").
+
+Still we need to tell jdbc that @qualifier value need to connect with which Datasource(Primary or Secondary)
+
+Ex-
+
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(
+    basePackages = "com.example.primary.repository",   // package where your JPA repositories live
+    entityManagerFactoryRef = "primaryEntityManagerFactory",
+    transactionManagerRef = "primaryTransactionManager"
+)
+public class PrimaryDBConfig {
+
+    @Bean(name = "primaryDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.primary")
+    @Primary - by mentioning this if someone does not annotate DataConfig methods by @Qualifier means it will use this one annotate by @Primary
+    public DataSource primaryDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+}
