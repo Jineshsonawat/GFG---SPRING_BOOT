@@ -1,0 +1,67 @@
+THere is a site - Spring initializer (In that we can choose version of spring, Java and which tool we want to use. Also can add dependencies. It can create the SB project for us.)
+
+Advantage Of SB - Easy to develop application
+                  No need to define beans in applicationContext.xml
+                  Annotation will do all the work.
+                  Save time to develop. Etc.
+
+** In SB project there is a file with main function and that is the only file that have main function in SB.
+
+That class has annotation as @SpringBootApplication. (Possible by dependency - spring-boot-starter-web).
+
+In Spring we need to do all the things like define the beans In SB it will be done by annotations.
+
+-- Whenever we add a dependency or add anything in XML file or when we provide the jar file to anyone we should first run mvn clean install (It check the xml file and if anything does not have in our project then it downloads it.)
+
+How to run the SB Application.
+
+1.Run the Application Directly.
+2. Official One - Run the command (mvn clean install), it will generate target folder.
+                  Inside the folder we have a Jar file and we need to run that jar file.
+
+   Command -      java -jar name of jar file
+                  java -jar ./target/sb-0.0-SNAPSHOT.jar
+
+
+## @Builder - Similar as Constructor. It is a derived concept.
+---  When we create object of class we need to provide values of parameters in a particular order but if we have 30 - 40 parameters then its hard to give values in order, to solve this issue we use builder.
+
+## @With - by using this annotation we can create the copy of the object by changing only one parameter
+                          Food food1 = food.withName("Aman");
+
+Aspect Oriented Programming (AOP) - Allows you to separate cross cutting concerns from business logic
+
+Logging - in Simpler words its like printing.
+Always use logger to logs the details which your application needs.
+
+  We can use SlF4j for logging
+    Syntax - private static Logger log = LoggerFactory.getLogger(TestService.class); or use @Slf4j
+
+ How to show the status or message to the user or as a response, using ResponseEntity.
+
+ Example - it says if the status is PL then shows food and if status is NOT_FOUND then shows the message.
+
+  @GetMapping("/get_item/{id}")
+     public ResponseEntity<?> makePizza(@PathVariable int id) throws IOException {
+         try{
+             Food food =  this.testService.getFoodById(id);
+             return new ResponseEntity<>(food, HttpStatus.OK);
+         }catch(NotFoundException e){
+             return new ResponseEntity<>(ErrorResponse.builder()
+                     .message(e.getMessage())
+                     .build(), HttpStatus.NOT_FOUND);
+         }
+
+     }
+
+-- In AOP we can define at one place that before and after logs and that will execute automatically whenever that method runs. we can also make it conditional, by default it's false. and define the property in application.properties.
+                 @ConditionalOnProperty(value = "aspect.loging" , havingValue = "true")
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+M - Model: Model are classes.Each model contain inf. of real world thing for which we are building applications
+V - View: A HTML/JSP/Thymeleaf page that is return in response
+C - Controller: part of the code that handles incoming request and outgoing response.
+
+** In old time Backend and Frontend at the same codebase. The Frontend part is called View.
+
+How the flow works.
+Code enters into CONTROLLER -> It trigger the SERVICE class (It decode we have to trigger repo depends on we have DB or not). Do all the logic and return what we have to process -> Gives the view -> Server will render the inf. in the view -> goes to CONTROLLER -> returns the view(HTML page) to us
+
+
+REST - Representational State Transfer (Style of communication across multiple platform)
+
+Principle of Rest Architecture.
+
+1. Client-Server Separation: Client - F, Server - B.
+2. Statelessness: The server doesn't store client context(information) between requests.
+                  Always have to pass whatever needed to the server
+3. Uniform Interface: Every call is same for different user.
+                      In MVC if we want to make mobile apps need to create from scratch but in REST we can consume same API's just need to create F
+4. Resource Based: Every request is uniquely identified by a combination of URL + Request Type.
+5. Representation Oriented: They can be represented in forms of JSON, XML, HTML etc.
+                            Clients will interact with representation of the data.
+6. Cacheable: Responses can be cached to improve performance.
+7. Layered System: The client doesn't need to know that it's talking directly or indirectly through middlemen (API gateway, load balancers, Proxies, VPNs).
+
+CORS - Cross Origin Resource Sharing. the backend system must be given who can access that.

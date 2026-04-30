@@ -1,0 +1,26 @@
+JDBC (Java Database Connectivity) - Way of connecting java application to Database.
+
+                   To connect Database with java application we need
+                   1. JDBC URL - jdbc:postgresql://localhost:8080/postgres -- Database name
+                                         |              |       | -- Port
+                                  Database type     Running on your own computer
+                   2. DB User name
+                   3. DB password
+                   4. query
+
+Syntax -
+               Connection connection = DriverManager.getConnection(url , user, password)
+               Statement statement = connection.createStatement();
+               ResultSet resultSet = statement.executeQuery(query);
+
+## DDL (Data Definition Language) - Defining/modifying the Structure of the Schema. Ex:- Create, Delete, Insert etc.
+                                    For doing this we need to use executeUpdate(query) - this will not return anything.
+
+## DML (Data Manipulation Language) - Work with the data inside the table. Ex - Select , Update, Alter etc.
+                                      For doing this we need to use executeQuery(query) - this will return the data which can store in ResultSet.
+
+## Row Mapper - Used to look the code cleaner and make the code reusable.
+
+## Connection Pooling - Connection pooling in Java JDBC is a technique to reuse database connections instead of creating a new one for every request, which saves time and resources.
+Popular libraries like HikariCP, Apache Commons DBCP, and C3P0 provide ready-to-use connection pools for PostgreSQL, MySQL, and other databases.
+
