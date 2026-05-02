@@ -1,0 +1,24 @@
+Hibernate (Older than Spring Data JPA)
+- Hibernate is an ORM (Object-Relational Mapping) framework.
+- ORM Talks to DB in simpler manner.
+- It maps Java classes (entities) to DB tables and Java objects to rows.
+- Instead of writing raw SQL, you write HQL (Hibernate Query Language) or use methods, and Hibernate generates SQL under the hood.
+
+               | - Continue to exist
+JPA (Java Persistence API)
+- JPA is a specification (a set of interfaces) for ORM in Java.
+- It defines how to manage data persistence, but does not provide implementation.
+- Hibernate is the most common implementation of JPA.
+
+Illustration:
+- JPA → abstract void addData()
+- Hibernate → addRowToTable() (to create a row in a table)
+- RabbitORM (hypothetical) → createRowInTheTable()
+
+Spring Data JPA
+- A Spring project built on JPA to make database access even easier.
+- It removes boilerplate code by providing repositories (e.g., CrudRepository, JpaRepository).
+- You only define interfaces, and Spring generates implementations at runtime.
+
+Transactional - If we want to do more than 1 DB operation like first create and then delete together but suppose create happened and delete got the error. SO if 1 fails then it should revert the other DB operation.
+To achieve this we use @Transactional.
