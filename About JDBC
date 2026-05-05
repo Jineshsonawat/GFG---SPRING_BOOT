@@ -80,3 +80,49 @@ public class PrimaryDBConfig {
         return DataSourceBuilder.create().build();
     }
 }
+
+......................................................................................................
+
+In BD relation there are many type of relation
+one to many , Many to One, One to one, Many to Many.
+
+One to Many.
+Department -> Employee
+
+Many to One.
+Employee -> Department
+
+As a facebook user., Every user has many friends and that user will be on many other user's friend list. That is Many to Many.
+
+.....................................................................................................
+
+Till now we have single Entity with no column that has connected with different table, Now Suppose if we have object in one Entity class then while posting the data we need to pass that object. Now there will be case that in the Object that we need to pass has many fields and to pass all the fields in JSON in irrelevant to Client, They just need to put the id with the name.
+
+
+      DTO(Data Transfer Object)     ------> Model ------>   (Data Access Object) DAO
+       EmployeeDto                                                     EmployeeDao
+     EmployeeInputEntity                                            EmployeeOutputEntity
+                                                                       EmployeeEntity
+
+      DTO - It always interact with client. In this we can define how we want to get the data from client.(Ex. How many fields we want to get from the client like if we have 5 field in department table and we only want 3 field, we can write the logic here.)
+
+      Model -  Represents the actual domain object mapped to the database table.
+                Annotated with @Entity.
+                Contains all fields that exist in the DB table.
+                Used by JPA/Hibernate for persistence.
+
+      DAO - Encapsulates database access logic.
+              Uses JpaRepository or JdbcTemplate.
+              Provides CRUD operations.
+              Abstracts persistence details from service layer.
+
+ ## Flow in Practice
+       1. Controller receives a request with EmployeeDTO.
+       2. Service converts EmployeeDTO → Employee (Model).
+       3. DAO/Repository persists Employee to DB.
+       4. When fetching, DAO returns Employee → Service converts it back to EmployeeDTO → Controller sends response.
+
+
+     Entity Class --> JPA Repository class--> Repository(CRUD) class --> Service class (Business Logic) --> Controller CLass
+
+ --  DTO contains less fields and we need to convert it into Model with has all the fields. So we use mapper so DTO coverts into model.

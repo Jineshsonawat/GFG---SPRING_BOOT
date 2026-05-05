@@ -1,4 +1,4 @@
-package com.learning.sb.model;
+package com.learning.sb.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

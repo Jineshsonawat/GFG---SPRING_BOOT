@@ -5,12 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learning.sb.Exception.NotFoundException;
 import com.learning.sb.config.GoogleDrive;
 import com.learning.sb.mapper.EmployeeRowMapper;
-import com.learning.sb.model.Employee;
-import com.learning.sb.model.Food;
+import com.learning.sb.entity.Employee;
+import com.learning.sb.entity.Food;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.File;

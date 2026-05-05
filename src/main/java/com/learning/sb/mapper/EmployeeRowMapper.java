@@ -1,6 +1,6 @@
 package com.learning.sb.mapper;
 
-import com.learning.sb.model.Employee;
+import com.learning.sb.entity.Employee;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

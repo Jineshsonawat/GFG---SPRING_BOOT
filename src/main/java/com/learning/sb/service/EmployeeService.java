@@ -1,6 +1,6 @@
 package com.learning.sb.service;
 
-import com.learning.sb.model.EmployeeJPA;
+import com.learning.sb.entity.EmployeeEntity;
 import com.learning.sb.repository.impl.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +13,15 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public EmployeeJPA addEmployee(EmployeeJPA employee){
+    public EmployeeEntity addEmployee(EmployeeEntity employee){
         return this.employeeRepository.saveOrUpdate(employee);
     }
 
-    public EmployeeJPA getEmployeeById (int id){
+    public EmployeeEntity getEmployeeById (int id){
         return this.employeeRepository.getByID(id);
     }
 
-    public EmployeeJPA updateEmployee(EmployeeJPA employee){
+    public EmployeeEntity updateEmployee(EmployeeEntity employee){
         return this.employeeRepository.saveOrUpdate(employee);
     }
 

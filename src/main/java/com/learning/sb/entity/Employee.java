@@ -1,4 +1,4 @@
-package com.learning.sb.model;
+package com.learning.sb.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

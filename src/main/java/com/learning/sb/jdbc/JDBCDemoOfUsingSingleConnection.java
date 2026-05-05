@@ -1,6 +1,6 @@
 package com.learning.sb.jdbc;
 
-import com.learning.sb.model.Employee;
+import com.learning.sb.entity.Employee;
 
 
 import java.sql.*;
