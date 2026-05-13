@@ -30,7 +30,7 @@ public class TestService {
 //    We do not mark the class with @Component still using as Bean bcz we marked as @Bean.
     public GoogleDrive googleDrive;
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public TestService(GoogleDrive googleDrive, JdbcTemplate jdbcTemplate) {
         this.googleDrive = googleDrive;

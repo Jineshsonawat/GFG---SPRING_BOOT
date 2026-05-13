@@ -71,3 +71,16 @@ Partial Update (Like update the password only in user profile)
 17. @Primary - Marks one bean as the default choice when multiple candidates exist.
                If you don’t specify @Qualifier, Spring will inject the @Primary bean.
 
+18. @Entity - Marks a class as a JPA entity, meaning it maps to a database table.
+19. @Id - Specifies the primary key field of the entity.
+20. @Column -Maps a field to a specific column in the database table. You can set attributes like nullable, length, etc.
+21. @GeneratedValue - Defines how the primary key is generated (e.g., auto-increment, sequence, UUID)
+22. @Table - Specifies the database table name for the entity. If omitted, the class name is used by default.
+23. @Enumerated - Used for mapping Java enums to database columns. Options: EnumType.STRING or EnumType.ORDINAL.
+24. @JoinColumn - Defines the foreign key column for relationships (@ManyToOne, @OneToOne).
+25. @Param - Used in Spring Data repositories to bind method parameters to query parameters in JPQL/SQL.
+26. @Version - Used for optimistic locking. Adds a version column to detect concurrent updates.
+27. @JsonIdentityReference - Controls how references are serialized. With alwaysAsId = true, related entities are shown only by their ID instead of full nested JSON
+28. @JsonIdentityInfo - Defines how Jackson handles object identity to avoid infinite recursion. Typically used with ObjectIdGenerators.PropertyGenerator and property = "id".
+
+
